@@ -17,3 +17,7 @@ To enable highlighting for PHP code not between `<?php ... ?>` by default:
 And here is how to use PHP as the primary domain:
 
     primary_domain = 'php'
+
+Configure the `api_url` for links to the API:
+
+    api_url = 'http://api.symfony.com/master/%s'
