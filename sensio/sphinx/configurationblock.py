@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+    :copyright: (c) 2010-2012 Fabien Potencier
+    :license: MIT, see LICENSE for more details.
+"""
+
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
 from string import upper
