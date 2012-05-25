@@ -66,7 +66,7 @@ def php_method_role(typ, rawtext, text, lineno, inliner, options={}, content=[])
     method = class_and_method[ns+2:]
 
     try:
-        full_url = base_url % full_class.replace('\\', '/') + '.html' + '#' + method + '()'
+        full_url = base_url % full_class.replace('\\', '/') + '.html' + '#method_' + method
     except (TypeError, ValueError):
         env.warn(env.docname, 'unable to expand %s api_url with base '
                  'URL %r, please make sure the base contains \'%%s\' '
