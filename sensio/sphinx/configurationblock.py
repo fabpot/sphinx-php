@@ -29,6 +29,8 @@ class ConfigurationBlock(Directive):
         'html+php':        'PHP',
         'ini':             'INI',
         'php-annotations': 'Annotations',
+        'php-standalone':  'Standalone Use',
+        'php-symfony':     'Framework Use',
     }
 
     def run(self):
