@@ -90,6 +90,22 @@ def php_phpclass_role(typ, rawtext, text, lineno, inliner, options={}, content=[
     pnode = nodes.literal('', '', *list)
     return [pnode], []
 
+def php_phpmethod_role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
+    text = utils.unescape(text)
+    has_explicit_title, title, class_and_method = split_explicit_title(text)
+
+    ns = class_and_method.rfind('::')
+    full_class = class_and_method[:ns]
+    method = class_and_method[ns+2:]
+
+    full_url = 'http://php.net/manual/en/%s.%s.php' % (lower(full_class), lower(method))
+
+    if not has_explicit_title:
+        title = full_class + '::' + method + '()'
+    list = [nodes.reference(title, title, internal=False, refuri=full_url, reftitle=full_class)]
+    pnode = nodes.literal('', '', *list)
+    return [pnode], []
+
 def php_phpfunction_role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
     text = utils.unescape(text)
     has_explicit_title, title, full_function = split_explicit_title(text)
@@ -108,4 +124,5 @@ def setup(app):
     app.add_role('class', php_class_role)
     app.add_role('method', php_method_role)
     app.add_role('phpclass', php_phpclass_role)
+    app.add_role('phpmethod', php_phpmethod_role)
     app.add_role('phpfunction', php_phpfunction_role)
