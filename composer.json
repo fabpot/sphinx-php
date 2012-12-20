@@ -1,0 +1,13 @@
+{
+    "name": "fabpot/sphinx-php",
+    "description": "Extension of Sphinx for PHP projects",
+    "authors": [
+        {
+            "name": "Fabien Potencier",
+            "email": "fabien@symfony.com"
+        }
+    ],
+    "require": {
+
+    }
+}
