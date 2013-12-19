@@ -1,13 +1,11 @@
 {
     "name": "fabpot/sphinx-php",
-    "description": "Extension of Sphinx for PHP projects",
+    "description": "Sphinx extension for PHP projects",
+    "license": "MIT",
     "authors": [
         {
             "name": "Fabien Potencier",
             "email": "fabien@symfony.com"
         }
-    ],
-    "require": {
-
-    }
+    ]
 }
