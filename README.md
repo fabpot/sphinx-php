@@ -1,9 +1,12 @@
 Sphinx Extensions for PHP and Symfony
 =====================================
 
-After adding `sensio` to your path (with something like `sys.path.insert(0,
-os.path.abspath('./path/to/sensio'))`), you can use the following extensions
-in your `conf.py` file:
+You can install the extension by 
+ - running the command: ``sudo pip install git+https://github.com/fabpot/sphinx-php.git`` 
+ - cloning the project and add `sensio` to your path (with something like `sys.path.insert(0,
+os.path.abspath('./path/to/sensio'))`).
+
+You can use the following extensions in your `conf.py` file:
 
  * `sensio.sphinx.refinclude`
  * `sensio.sphinx.configurationblock`
