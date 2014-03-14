@@ -8,6 +8,8 @@ You can install the extension by:
  * cloning the project and add `sensio` to your path (with something like
    `sys.path.insert(0, os.path.abspath('./path/to/sensio'))`).
 
+Note that these Sphinx extensions do not work with Python 3.
+
 You can use the following extensions in your `conf.py` file:
 
  * `sensio.sphinx.refinclude`
