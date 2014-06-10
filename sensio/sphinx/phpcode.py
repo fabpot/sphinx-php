@@ -4,6 +4,8 @@
     :license: MIT, see LICENSE for more details.
 """
 
+import re
+
 from docutils import nodes, utils
 
 from sphinx.util.nodes import split_explicit_title
@@ -37,6 +39,9 @@ def php_class_role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
     base_url = env.app.config.api_url
     has_explicit_title, title, full_class = split_explicit_title(text)
 
+    if len(re.findall(r'[^\\]\\[^\\]', rawtext)) > 0:
+        env.warn(env.docname, 'backslash not escaped in %s' % rawtext, lineno)
+
     try:
         full_url = base_url % full_class.replace('\\', '/') + '.html'
     except (TypeError, ValueError):
@@ -63,6 +68,9 @@ def php_method_role(typ, rawtext, text, lineno, inliner, options={}, content=[])
     ns = class_and_method.rfind('::')
     full_class = class_and_method[:ns]
     method = class_and_method[ns+2:]
+
+    if len(re.findall(r'[^\\]\\[^\\]', rawtext)) > 0:
+        env.warn(env.docname, 'backslash not escaped in %s' % rawtext, lineno)
 
     try:
         full_url = base_url % full_class.replace('\\', '/') + '.html' + '#method_' + method
