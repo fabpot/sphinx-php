@@ -16,6 +16,9 @@ def php_namespace_role(typ, rawtext, text, lineno, inliner, options={}, content=
     base_url = env.app.config.api_url
     has_explicit_title, title, namespace = split_explicit_title(text)
 
+    if len(re.findall(r'[^\\]\\[^\\]', rawtext)) > 0:
+        env.warn(env.docname, 'backslash not escaped in %s' % rawtext, lineno)
+
     try:
         full_url = base_url % namespace.replace('\\', '/') + '.html'
     except (TypeError, ValueError):
