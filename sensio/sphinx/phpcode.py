@@ -147,7 +147,7 @@ def build_url(role, namespace, class_name, method, inliner):
         api_url_pattern = env.app.config.api_url.replace('%s', fqcn)
         api_url_pattern += '.html{method}#method_%(method)s{/method}'
     else:
-        api_url_pattern = env.app.config.api_url_pattern
+        api_url_pattern = str(env.app.config.api_url_pattern)
 
     api_url_pattern = api_url_pattern.replace('{'+role+'}', '')
     api_url_pattern = api_url_pattern.replace('{/'+role+'}', '')
@@ -161,6 +161,6 @@ def build_url(role, namespace, class_name, method, inliner):
         env.warn(env.docname, 'unable to expand %s api_url with base '
                  'URL %r, please make sure the base contains \'%%s\' '
                  'exactly once' % (role, api_url_pattern))
-        full_url = api_url_pattern + utils.escape(full_class)
+        full_url = api_url_pattern + full_class
 
     return full_url
