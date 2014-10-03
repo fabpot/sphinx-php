@@ -32,6 +32,14 @@ class ConfigurationBlock(Directive):
         'php-symfony':     'Framework Use',
     }
 
+    def __init__(self, *args):
+        Directive.__init__(self, *args)
+        env = self.state.document.settings.env
+        config_block = env.app.config.config_block
+
+        for language in config_block:
+            self.formats[language] = config_block[language]
+
     def run(self):
         env = self.state.document.settings.env
 
@@ -78,3 +86,4 @@ def setup(app):
                  html=(visit_configurationblock_html, depart_configurationblock_html),
                  latex=(visit_configurationblock_latex, depart_configurationblock_latex))
     app.add_directive('configuration-block', ConfigurationBlock)
+    app.add_config_value('config_block', {}, 'env')
