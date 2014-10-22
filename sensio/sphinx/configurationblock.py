@@ -54,8 +54,12 @@ class ConfigurationBlock(Directive):
                 #targetid = "configuration-block-%d" % env.new_serialno('configuration-block')
                 #targetnode = nodes.target('', '', ids=[targetid])
                 #targetnode.append(child)
+                if 'language' in child:
+                    language = child['language']
+                else:
+                    language = env.app.config.highlight_language
 
-                innernode = nodes.emphasis(self.formats[child['language']], self.formats[child['language']])
+                innernode = nodes.emphasis(self.formats[language], self.formats[language])
 
                 para = nodes.paragraph()
                 para += [innernode, child]
