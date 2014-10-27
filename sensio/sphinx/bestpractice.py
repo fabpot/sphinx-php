@@ -32,7 +32,6 @@ class BestPractice(Directive):
 
 def visit_bestpractice_node(self, node):
     self.body.append(self.starttag(node, 'div', CLASS=('admonition best-practice')))
-    node.insert(0, nodes.title('best-practice', 'Best Practices'))
     self.set_first_last(node)
 
 def depart_bestpractice_node(self, node):
