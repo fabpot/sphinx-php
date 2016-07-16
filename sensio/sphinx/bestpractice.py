@@ -1,6 +1,5 @@
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
-from string import upper
 from sphinx.util.compat import make_admonition
 from sphinx import addnodes
 from sphinx.locale import _
