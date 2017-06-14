@@ -7,6 +7,8 @@ You can install the extension by:
 
  * cloning the project and add `sensio` to your path (with something like
    `sys.path.insert(0, os.path.abspath('./path/to/sensio'))`).
+   
+ * Arch Linux users can use the [AUR package](https://aur.archlinux.org/packages/python-sphinx-php-git/)
 
 You can use the following extensions in your `conf.py` file:
 
