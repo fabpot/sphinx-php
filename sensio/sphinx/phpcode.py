@@ -80,7 +80,7 @@ def php_phpclass_role(typ, rawtext, text, lineno, inliner, options={}, content=[
     text = utils.unescape(text)
     has_explicit_title, title, full_class = split_explicit_title(text)
 
-    full_url = 'https://secure.php.net/manual/en/class.%s.php' % full_class.lower()
+    full_url = 'https://www.php.net/manual/en/class.%s.php' % full_class.lower()
 
     if not has_explicit_title:
         title = full_class
@@ -96,7 +96,7 @@ def php_phpmethod_role(typ, rawtext, text, lineno, inliner, options={}, content=
     full_class = class_and_method[:ns]
     method = class_and_method[ns+2:]
 
-    full_url = 'https://secure.php.net/manual/en/%s.%s.php' % (full_class.lower(), method.lower())
+    full_url = 'https://www.php.net/manual/en/%s.%s.php' % (full_class.lower(), method.lower())
 
     if not has_explicit_title:
         title = full_class + '::' + method + '()'
@@ -108,7 +108,7 @@ def php_phpfunction_role(typ, rawtext, text, lineno, inliner, options={}, conten
     text = utils.unescape(text)
     has_explicit_title, title, full_function = split_explicit_title(text)
 
-    full_url = 'https://secure.php.net/manual/en/function.%s.php' % full_function.replace('_', '-').lower()
+    full_url = 'https://www.php.net/manual/en/function.%s.php' % full_function.replace('_', '-').lower()
 
     if not has_explicit_title:
         title = full_function
