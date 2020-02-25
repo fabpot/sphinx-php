@@ -39,3 +39,5 @@ def depart_bestpractice_node(self, node):
 def setup(app):
     app.add_node(bestpractice, html=(visit_bestpractice_node, depart_bestpractice_node))
     app.add_directive('best-practice', BestPractice)
+
+    return {'parallel_read_safe': True}

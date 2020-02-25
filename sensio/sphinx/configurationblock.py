@@ -94,3 +94,5 @@ def setup(app):
                  latex=(visit_configurationblock_latex, depart_configurationblock_latex))
     app.add_directive('configuration-block', ConfigurationBlock)
     app.add_config_value('config_block', {}, 'env')
+
+    return {'parallel_read_safe': True}

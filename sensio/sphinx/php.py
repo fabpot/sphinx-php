@@ -16,6 +16,8 @@ from sphinx.util.docfields import Field, GroupedField, TypedField
 def setup(app):
     app.add_domain(PHPDomain)
 
+    return {'parallel_read_safe': True}
+
 class PHPXRefRole(XRefRole):
     def process_link(self, env, refnode, has_explicit_title, title, target):
         # basically what sphinx.domains.python.PyXRefRole does
