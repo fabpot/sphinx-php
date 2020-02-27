@@ -127,6 +127,8 @@ def setup(app):
     app.add_role('phpmethod', php_phpmethod_role)
     app.add_role('phpfunction', php_phpfunction_role)
 
+    return {'parallel_read_safe': True}
+
 def build_url(role, namespace, class_name, method, inliner):
     env = inliner.document.settings.env
 
