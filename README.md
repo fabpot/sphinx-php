@@ -12,7 +12,6 @@ You can install the extension by:
 
 You can use the following extensions in your `conf.py` file:
 
- * `sensio.sphinx.refinclude`
  * `sensio.sphinx.configurationblock`
  * `sensio.sphinx.phpcode`
  * `sensio.sphinx.bestpractice`
