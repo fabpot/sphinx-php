@@ -6,7 +6,7 @@
 
 from sphinx import addnodes
 from sphinx.domains import Domain, ObjType
-from sphinx.locale import l_, _
+from sphinx.locale import _
 from sphinx.directives import ObjectDescription
 from sphinx.domains.python import py_paramlist_re as js_paramlist_re
 from sphinx.roles import XRefRole
