@@ -7,8 +7,10 @@
 from docutils.parsers.rst import Directive, directives
 from docutils import nodes
 
+
 class configurationblock(nodes.General, nodes.Element):
     pass
+
 
 class ConfigurationBlock(Directive):
     has_content = True
@@ -17,31 +19,34 @@ class ConfigurationBlock(Directive):
     final_argument_whitespace = True
     option_spec = {}
     formats = {
-        'html':            'HTML',
-        'xml':             'XML',
-        'php':             'PHP',
-        'yaml':            'YAML',
-        'jinja':           'Twig',
-        'html+jinja':      'Twig',
-        'jinja+html':      'Twig',
-        'twig':            'Twig',
-        'html+twig':       'Twig',
-        'twig+html':       'Twig',
-        'php+html':        'PHP',
-        'html+php':        'PHP',
-        'ini':             'INI',
+        'html': 'HTML',
+        'xml': 'XML',
+        'php': 'PHP',
+        'yaml': 'YAML',
+        'jinja': 'Twig',
+        'html+jinja': 'Twig',
+        'jinja+html': 'Twig',
+        'twig': 'Twig',
+        'html+twig': 'Twig',
+        'twig+html': 'Twig',
+        'php+html': 'PHP',
+        'html+php': 'PHP',
+        'ini': 'INI',
+        'markdown': 'Markdown',
         'php-annotations': 'Annotations',
-        'php-standalone':  'Standalone Use',
-        'php-symfony':     'Framework Use',
+        'php-standalone': 'Standalone Use',
+        'php-symfony': 'Framework Use',
+        'rst': 'reStructuredText',
+        'varnish2': 'Varnish 2',
+        'varnish3': 'Varnish 3',
+        'varnish4': 'Varnish 4',
+        'blackfire': 'Blackfire',
+        'bash': 'Bash',
+        'apache': 'Apache',
+        'nginx': 'Nginx',
+        'terminal': 'Terminal',
+        'env': '.env',
     }
-
-    def __init__(self, *args):
-        Directive.__init__(self, *args)
-        env = self.state.document.settings.env
-        config_block = env.app.config.config_block
-
-        for language in config_block:
-            self.formats[language] = config_block[language]
 
     def run(self):
         env = self.state.document.settings.env
@@ -57,12 +62,9 @@ class ConfigurationBlock(Directive):
                 #targetid = "configuration-block-%d" % env.new_serialno('configuration-block')
                 #targetnode = nodes.target('', '', ids=[targetid])
                 #targetnode.append(child)
-                if 'language' in child:
-                    language = child['language']
-                else:
-                    language = env.app.config.highlight_language
 
-                innernode = nodes.emphasis(self.formats[language], self.formats[language])
+                innernode = nodes.emphasis(self.formats[child['language']],
+                                           self.formats[child['language']])
 
                 para = nodes.paragraph()
                 para += [innernode, child]
@@ -76,23 +78,29 @@ class ConfigurationBlock(Directive):
 
         return [resultnode]
 
+
 def visit_configurationblock_html(self, node):
     self.body.append(self.starttag(node, 'div', CLASS='configuration-block'))
+
 
 def depart_configurationblock_html(self, node):
     self.body.append('</div>\n')
 
+
 def visit_configurationblock_latex(self, node):
     pass
+
 
 def depart_configurationblock_latex(self, node):
     pass
 
+
 def setup(app):
     app.add_node(configurationblock,
-                 html=(visit_configurationblock_html, depart_configurationblock_html),
-                 latex=(visit_configurationblock_latex, depart_configurationblock_latex))
+                 html=(visit_configurationblock_html,
+                       depart_configurationblock_html),
+                 latex=(visit_configurationblock_latex,
+                        depart_configurationblock_latex))
     app.add_directive('configuration-block', ConfigurationBlock)
-    app.add_config_value('config_block', {}, 'env')
 
     return {'parallel_read_safe': True}
