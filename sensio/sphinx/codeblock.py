@@ -30,7 +30,7 @@ class NumberedCodeBlock(CodeBlock):
     }
 
     def run(self):
-        self.options['linenos'] = 'table'
+        self.options['linenos'] = True
         literal = super(NumberedCodeBlock, self).run()[0];
 
         if 'zerocopy' in self.options:
