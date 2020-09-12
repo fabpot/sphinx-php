@@ -34,6 +34,7 @@ class ConfigurationBlock(Directive):
         'ini': 'INI',
         'markdown': 'Markdown',
         'php-annotations': 'Annotations',
+        'php-attributes': 'Attributes',
         'php-standalone': 'Standalone Use',
         'php-symfony': 'Framework Use',
         'rst': 'reStructuredText',
